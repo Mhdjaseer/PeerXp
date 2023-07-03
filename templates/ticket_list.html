@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    ticket list 
+{% endblock title %}
+
+
+{% block content  %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Ticket List</h1>
+    <ul class="space-y-4">
+        {% for ticket in tickets %}
+        <li class="bg-white rounded-lg shadow p-4">
+           <h2 class="text-lg font-semibold">department:{{ ticket.department }}</h2>
+            <h2 class="text-lg font-semibold">subject:{{ ticket.subject }}</h2>
+            <p class="text-gray-500">Priority: {{ ticket.priority }}</p>
+            <p class="text-gray-500">Contact: {{ ticket.contact_email }} | {{ ticket.contact_phone }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+    
+{% endblock content  %}

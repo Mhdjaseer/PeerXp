@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update
+{% endblock title %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 flex justify-center">
+    <div class="max-w-sm">
+        <h2 class="text-2xl font-bold mb-4">Update Department - {{ department.name }}</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+                <input id="name" type="text" name="name" value="{{ department.name }}" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+                <textarea id="description" name="description" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500">{{ department.description }}</textarea>
+            </div>
+
+            <input type="submit" value="Update Department" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+   

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    home
+{% endblock title %}
+
+{% block content %}
+<nav class="bg-gray-900 text-white py-4">
+    <div class="container mx-auto px-4">
+        <ul class="flex space-x-4">
+            <li>
+                <a href="{% url 'ticket_list' %}" class="hover:text-gray-300">Ticket List</a>
+            </li>
+            <li>
+                <a href="{% url 'create_ticket' %}" class="hover:text-gray-300">Create Ticket</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-4">Department Tickets - {{ department.name }}</h2>
+
+    {% if department_tickets %}
+    <h3 class="text-lg font-semibold mb-2">Tickets:</h3>
+    <ul class="list-disc list-inside">
+        {% for ticket in department_tickets %}
+        <li class="bg-gray-100 p-4 mb-4 rounded-md">
+            <h3 class="text-xl font-semibold mb-2">{{ ticket.subject }}</h3>
+            <p class="mb-2">{{ ticket.body }}</p>
+            <p class="text-gray-600">Priority: {{ ticket.priority }}</p>
+            <p class="text-gray-600">Contact Email: {{ ticket.contact_email }}</p>
+            <p class="text-gray-600">Contact Phone: {{ ticket.contact_phone }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-gray-600">No department tickets found.</p>
+    {% endif %}
+</div>
+
+    
+{% endblock content %}

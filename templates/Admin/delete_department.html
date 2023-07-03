@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete Department
+{% endblock %}
+
+{% block content %}
+  <div class="flex items-center justify-center">
+    <div class="bg-white shadow-md rounded px-8 py-6 w-full max-w-md">
+      <h2 class="text-2xl font-bold text-center mb-6">Delete Department - {{ department.name }}</h2>
+      {% if error_message %}
+        <p class="text-red-500">{{ error_message }}</p>
+      {% else %}
+        <p class="mb-4">Are you sure you want to delete this department?</p>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="flex justify-center">
+            <input type="submit" value="Delete Department" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          </div>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
