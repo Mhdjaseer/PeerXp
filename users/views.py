@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
-
+from django.contrib.auth import logout
 
 
 class home(TemplateView):
@@ -163,3 +163,8 @@ def ticket_list(request):
     
     context = {'tickets': tickets}
     return render(request, 'ticket_list.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
